@@ -42,6 +42,6 @@ public class Start extends Application {
 
         fxmlLoader.setLocation((getClass().getResource("/Panel.fxml")));
         rootNode = fxmlLoader.load();
-        System.out.println("dsa");
+
     }
 }
