@@ -18,7 +18,7 @@ public class Start extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Scene scene = new Scene(rootNode, 600, 600);
+        Scene scene = new Scene(rootNode, 750, 700);
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
