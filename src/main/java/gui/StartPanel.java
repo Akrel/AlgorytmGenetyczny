@@ -21,7 +21,8 @@ public class StartPanel implements Initializable {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Wybierz plik: ");
         File file = fileChooser.showOpenDialog(getWindow());
-        backpack.createPopulation(file);
+        backpack = backpack.createPopulation(file);
+        System.out.println("dsa");
 
     }
 
