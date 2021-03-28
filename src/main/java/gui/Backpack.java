@@ -27,12 +27,15 @@ public class Backpack {
         this.aktualnawaga = aktualnawaga;
     }
 
-    public void createPopulation() {
+    public Backpack createPopulation() {
+        List<Item> itemList2 = new ArrayList<>();
+        int aktualnawaga = 0;
         for (int i = 0; i < 10; i++) {
             Item item = createRandomItem(i);
-            itemList.add(item);
+            itemList2.add(item);
             aktualnawaga += item.getWaga();
         }
+        return new Backpack(itemList2, aktualnawaga);
     }
 
 
@@ -69,7 +72,9 @@ public class Backpack {
 
     private Item createRandomItem(int nameItem) {
         Random generator = new Random();
-        return new Item(generator.nextInt(20 - 1) + 1, Math.round(generator.nextDouble() * (10D - 1D) + 1D), "Item" + nameItem);
+        double v = generator.nextDouble() * (10D - 1D) + 1D;
+        //Math.round(v * 100.0) / 100.0,
+        return new Item(generator.nextInt(20 - 1) + 1, Math.round(v), "Item" + nameItem);
     }
 
     private Item createItem(double weight, int value, int nameItem) {

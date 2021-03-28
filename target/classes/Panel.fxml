@@ -15,25 +15,25 @@
    <Button layoutX="424.0" layoutY="597.0" mnemonicParsing="false" onMouseClicked="#saveToFIle" text="Zapisz do pliku" />
    <ScrollPane layoutX="71.0" layoutY="35.0" prefHeight="533.0" prefWidth="267.0">
       <content>
-         <TableView prefHeight="429.0" prefWidth="264.0">
+         <TableView fx:id="table1" prefHeight="429.0" prefWidth="264.0">
            <columns>
-             <TableColumn prefWidth="84.0" text="Nazwa" />
-             <TableColumn prefWidth="94.0" text="Waga" />
-               <TableColumn prefWidth="85.0" text="Wartosc" />
+             <TableColumn fx:id="tab1Name" prefWidth="84.0" text="Nazwa" />
+             <TableColumn fx:id="tab1Weight" prefWidth="94.0" text="Waga" />
+               <TableColumn fx:id="tab1Value" prefWidth="85.0" text="Wartosc" />
            </columns>
          </TableView>
       </content></ScrollPane>
-   <TextArea id="WartoscP1" layoutX="183.0" layoutY="470.0" prefHeight="8.0" prefWidth="146.0" />
-   <TextArea id="WagaP1" layoutX="183.0" layoutY="516.0" prefHeight="8.0" prefWidth="146.0" />
+   <TextArea id="WartoscP1" fx:id="tab1ValueField" layoutX="183.0" layoutY="470.0" prefHeight="8.0" prefWidth="146.0" />
+   <TextArea id="WagaP1" fx:id="tab1WeightField" layoutX="183.0" layoutY="516.0" prefHeight="8.0" prefWidth="146.0" />
    <Text layoutX="86.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wartość Plecaka" wrappingWidth="88.13671875" />
    <Text layoutX="142.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Waga" wrappingWidth="37.13671875" />
    <ScrollPane layoutX="424.0" layoutY="35.0" prefHeight="533.0" prefWidth="267.0">
       <content>
-         <TableView prefHeight="429.0" prefWidth="264.0">
+         <TableView fx:id="table2" prefHeight="429.0" prefWidth="264.0">
             <columns>
-               <TableColumn prefWidth="92.0" text="Nazwa" />
-               <TableColumn prefWidth="88.0" text="Waga" />
-               <TableColumn prefWidth="83.0" text="Wartość" />
+               <TableColumn fx:id="tabName" prefWidth="92.0" text="Nazwa" />
+               <TableColumn fx:id="tab2Weight" prefWidth="88.0" text="Waga" />
+               <TableColumn fx:id="tab2Value" prefWidth="83.0" text="Wartość" />
             </columns>
          </TableView>
       </content>

@@ -28,10 +28,13 @@ public class Testwoa {
             przedmiots = new ArrayList<>();
         }
 */
+        for (int e = 0; e < 90; e++) {
+            Random generator = new Random();
+            double v = generator.nextDouble() * (10D - 1D) + 1D;
 
 
-
-
+            System.out.println(Math.round(v * 100.0) / 100.0);
+        }
 
     }
 }
