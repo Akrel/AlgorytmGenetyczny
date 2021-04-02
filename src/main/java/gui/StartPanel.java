@@ -21,6 +21,7 @@ public class StartPanel implements Initializable {
     @FXML
     private AnchorPane anchorMain;
     private Backpack backpack;
+    private Population population;
     @FXML
     private TableView<Item> table1;
 
@@ -63,7 +64,7 @@ public class StartPanel implements Initializable {
         }
 
         if (file != null) {
-            backpack = backpack.createPopulation(file);
+            population = new Population(file);
             System.out.println("dsa");
             clearTable();
             loadToTab1();
@@ -77,7 +78,7 @@ public class StartPanel implements Initializable {
 
     @FXML
     void generatePopulation() {
-        backpack = backpack.createPopulation();
+        population = new Population(10);
         clearTable();
         loadToTab1();
     }
@@ -92,25 +93,27 @@ public class StartPanel implements Initializable {
 
         File file = fileChooser.showSaveDialog(getWindow());
         if (file != null) {
-            backpack.createFile(file);
+            if(population != null)
+                population.populationToFIle(file);
         }
 
 
     }
 
     private void loadToTab1() {
-        ObservableList<Item> list = FXCollections.observableArrayList(backpack.getItemList());
-        tab1Name.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue().getNazwa()));
-        tab1Weight.setCellValueFactory(param -> new ReadOnlyStringWrapper(String.valueOf(param.getValue().getWaga())));
-        tab1Value.setCellValueFactory(param -> new ReadOnlyStringWrapper(String.valueOf(param.getValue().getWartosc())));
+        ObservableList<Item> list = FXCollections.observableArrayList(population.getItemList());
+        tab1Name.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue().getName()));
+        tab1Weight.setCellValueFactory(param -> new ReadOnlyStringWrapper(String.valueOf(param.getValue().getWeight())));
+        tab1Value.setCellValueFactory(param -> new ReadOnlyStringWrapper(String.valueOf(param.getValue().getValue())));
 
-        tab1WeightField.setText(String.valueOf(backpack.getAktualnawaga()));
+        tab1WeightField.setText(String.valueOf(population.getWeightPopulation()));
         table1.setItems(list);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         backpack = new Backpack();
+
     }
 
 

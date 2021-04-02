@@ -9,8 +9,6 @@ public class BackpackTest {
 
     @Test
     public void sizeOfBackpack() {
-        backpack.createPopulation();
-        backpack.populationToString();
         assertEquals(10, backpack.getItemList().size());
     }
 

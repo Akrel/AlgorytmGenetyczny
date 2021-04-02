@@ -4,13 +4,13 @@ import lombok.Getter;
 
 @Getter
 public class Item {
-    private final int wartosc;
-    private final double waga;
-    private final String nazwa;
+    private final int value;
+    private final double weight;
+    private final String name;
 
-    public Item(int wartosc, double waga, String nazwa) {
-        this.wartosc = wartosc;
-        this.waga = waga;
-        this.nazwa = nazwa;
+    public Item(int value, double weight, int numberItem) {
+        this.value = value;
+        this.weight = weight;
+        this.name = "Item: " + numberItem;
     }
 }
