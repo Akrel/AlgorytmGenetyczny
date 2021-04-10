@@ -100,6 +100,12 @@ public class StartPanel implements Initializable {
 
     }
 
+    @FXML
+    void runAlg() {
+        GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(population);
+       geneticAlgorithm.createPopulation();
+    }
+
     private void loadToTab1() {
         ObservableList<Item> list = FXCollections.observableArrayList(population.getItemList());
         tab1Name.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue().getName()));

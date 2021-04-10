@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="anchorMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="746.0" styleClass="bg_class" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StartPanel">
-   <Button alignment="TOP_CENTER" layoutX="626.0" layoutY="597.0" mnemonicParsing="false" styleClass="_button" text="Uruchom" />
+   <Button alignment="TOP_CENTER" layoutX="626.0" layoutY="597.0" mnemonicParsing="false" onMouseClicked="#runAlg" styleClass="_button" text="Uruchom" />
    <Button layoutX="291.0" layoutY="597.0" mnemonicParsing="false" onMouseClicked="#readFromFile" text="Wczytaj z pliku" />
    <Button layoutX="71.0" layoutY="598.0" mnemonicParsing="false" onMouseClicked="#generatePopulation" text="Wygeneruj Losową populacje" />
    <Button layoutX="424.0" layoutY="597.0" mnemonicParsing="false" onMouseClicked="#saveToFIle" text="Zapisz do pliku" />

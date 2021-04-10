@@ -9,7 +9,7 @@ import java.util.List;
 public class Backpack {
     private final double wagaPlecaka;
     private final double aktualnawaga;
-    private List<Item> itemList;
+    private ArrayList<Item> itemList;
 
     public Backpack() {
         itemList = new ArrayList<>();
@@ -17,7 +17,7 @@ public class Backpack {
         this.aktualnawaga = 0;
     }
 
-    private Backpack(List<Item> itemList, double aktualnawaga) {
+    private Backpack( double aktualnawaga) {
         this.itemList = itemList;
         this.wagaPlecaka = 20;
         this.aktualnawaga = aktualnawaga;
