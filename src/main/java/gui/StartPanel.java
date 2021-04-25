@@ -93,7 +93,7 @@ public class StartPanel implements Initializable {
 
         File file = fileChooser.showSaveDialog(getWindow());
         if (file != null) {
-            if(population != null)
+            if (population != null)
                 population.populationToFIle(file);
         }
 
@@ -103,7 +103,7 @@ public class StartPanel implements Initializable {
     @FXML
     void runAlg() {
         GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(population);
-       geneticAlgorithm.createPopulation();
+        geneticAlgorithm.test();
     }
 
     private void loadToTab1() {
