@@ -29,7 +29,7 @@
    <ScrollPane layoutX="424.0" layoutY="35.0" prefHeight="533.0" prefWidth="267.0">
       <TableView fx:id="table2" prefHeight="429.0" prefWidth="264.0">
          <columns>
-            <TableColumn fx:id="tabName" prefWidth="92.0" text="Nazwa" />
+            <TableColumn fx:id="tabName2" prefWidth="92.0" text="Nazwa" />
             <TableColumn fx:id="tab2Weight" prefWidth="88.0" text="Waga" />
             <TableColumn fx:id="tab2Value" prefWidth="83.0" text="Wartość" />
          </columns>
@@ -37,6 +37,6 @@
    </ScrollPane>
    <Text layoutX="439.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wartość Plecaka" wrappingWidth="88.13671875" />
    <Text layoutX="495.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Waga" wrappingWidth="37.13671875" />
-   <TextArea id="WartoscP2" layoutX="537.0" layoutY="470.0" prefHeight="8.0" prefWidth="146.0" />
-   <TextArea id="WagaP2" layoutX="537.0" layoutY="517.0" prefHeight="8.0" prefWidth="146.0" />
+   <TextArea id="WartoscP2" fx:id="bestKnapsackValue" layoutX="537.0" layoutY="470.0" prefHeight="8.0" prefWidth="146.0" />
+   <TextArea id="WagaP2" fx:id="bestKnapsackWeight" layoutX="537.0" layoutY="517.0" prefHeight="8.0" prefWidth="146.0" />
 </AnchorPane>

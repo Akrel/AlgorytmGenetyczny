@@ -41,16 +41,22 @@ public class StartPanel implements Initializable {
     private TextArea tab1WeightField;
 
     @FXML
-    private TableView<?> table2;
+    private TableView<Item> table2;
 
     @FXML
-    private TableColumn<?, ?> tabName;
+    private TableColumn<Item, String> tabName2;
 
     @FXML
-    private TableColumn<?, ?> tab2Weight;
+    private TableColumn<Item, String> tab2Weight;
 
     @FXML
-    private TableColumn<?, ?> tab2Value;
+    private TableColumn<Item, String> tab2Value;
+    @FXML
+    private TextArea bestKnapsackValue;
+
+    @FXML
+    private TextArea bestKnapsackWeight;
+
 
     @FXML
     void readFromFile(MouseEvent event) {
@@ -81,6 +87,7 @@ public class StartPanel implements Initializable {
         population = new Population(10);
         clearTable();
         loadToTab1();
+
     }
 
     @FXML
@@ -103,7 +110,9 @@ public class StartPanel implements Initializable {
     @FXML
     void runAlg() {
         GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(population);
-        geneticAlgorithm.test();
+        geneticAlgorithm.run();
+        loadToTab2(geneticAlgorithm.findBest());
+
     }
 
     private void loadToTab1() {
@@ -114,6 +123,18 @@ public class StartPanel implements Initializable {
 
         tab1WeightField.setText(String.valueOf(population.getWeightPopulation()));
         table1.setItems(list);
+    }
+
+
+    private void loadToTab2(BestSolution best) {
+        ObservableList<Item> list = FXCollections.observableArrayList(best.getItemList());
+        tabName2.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue().getName()));
+        tab2Weight.setCellValueFactory(param -> new ReadOnlyStringWrapper(String.valueOf(param.getValue().getWeight())));
+        tab2Value.setCellValueFactory(param -> new ReadOnlyStringWrapper(String.valueOf(param.getValue().getValue())));
+
+        bestKnapsackValue.setText(String.valueOf(best.getValue()));
+        bestKnapsackWeight.setText(String.valueOf(best.getWeight()));
+        table2.setItems(list);
     }
 
     @Override
