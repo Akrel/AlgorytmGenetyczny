@@ -5,9 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
@@ -20,7 +18,6 @@ import java.util.ResourceBundle;
 public class StartPanel implements Initializable {
     @FXML
     private AnchorPane anchorMain;
-    private Backpack backpack;
     private Population population;
     @FXML
     private TableView<Item> table1;
@@ -57,6 +54,20 @@ public class StartPanel implements Initializable {
     @FXML
     private TextArea bestKnapsackWeight;
 
+    @FXML
+    private Spinner<Integer> populationSize;
+
+    @FXML
+    private Spinner<Integer> knapsackWeight;
+
+    @FXML
+    private Spinner<Double> mutationRate;
+
+    @FXML
+    private Spinner<Double> chancetoCross;
+
+    @FXML
+    private Spinner<Integer> numberOfGneration;
 
     @FXML
     void readFromFile(MouseEvent event) {
@@ -84,7 +95,7 @@ public class StartPanel implements Initializable {
 
     @FXML
     void generatePopulation() {
-        population = new Population(10);
+        population = new Population(populationSize.getValue());
         clearTable();
         loadToTab1();
 
@@ -109,7 +120,7 @@ public class StartPanel implements Initializable {
 
     @FXML
     void runAlg() {
-        GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(population);
+        GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(population, mutationRate.getValue(), chancetoCross.getValue(), numberOfGneration.getValue(), knapsackWeight.getValue());
         geneticAlgorithm.run();
         loadToTab2(geneticAlgorithm.findBest());
 
@@ -139,8 +150,19 @@ public class StartPanel implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        backpack = new Backpack();
 
+        SpinnerValueFactory<Integer> spinnerPopulation = new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 200, 10,1);
+        populationSize.setValueFactory(spinnerPopulation);
+
+        SpinnerValueFactory<Double> mutationRateSpinner = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.1, 0.9, 0.1,0.1);
+        mutationRate.setValueFactory(mutationRateSpinner);
+
+        SpinnerValueFactory<Integer> knapsackWeightSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(20, 300, 20,1);
+        knapsackWeight.setValueFactory(knapsackWeightSpinner);
+        SpinnerValueFactory<Double> chancetoCrossSpinner = new SpinnerValueFactory.DoubleSpinnerValueFactory(0.1, 0.9, 0.1,0.1);
+        chancetoCross.setValueFactory(chancetoCrossSpinner);
+        SpinnerValueFactory<Integer> numberOfGnerationSpinner = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 30, 5,1);
+        numberOfGneration.setValueFactory(numberOfGnerationSpinner);
     }
 
 

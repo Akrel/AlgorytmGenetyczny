@@ -5,15 +5,23 @@ import java.util.*;
 public class GeneticAlgorithm {
 
     private final List<Item> populationItemList;
-    private final double weightKnapsack = 20.0;
-    private final int numberOfItems = 10;
+    private final double weightKnapsack;
+    private final int numberOfItems;
+    private final int numberOfGenerations;
+    private final double mutationRate;
+    private final double chanceToCross;
     private ArrayList<ArrayList<Integer>> chromosom;
     private ArrayList<Integer> valueList;
     private ArrayList<Double> weightList;
     private ArrayList<Integer> bestGene;
 
-    public GeneticAlgorithm(Population population) {
+    public GeneticAlgorithm(Population population, double mutationRate, double chanceToCross, int numberOfGenerations, double weightKnapsack) {
         populationItemList = population.getItemList();
+        this.mutationRate = mutationRate;
+        this.chanceToCross = chanceToCross;
+        this.weightKnapsack = weightKnapsack;
+        this.numberOfGenerations = numberOfGenerations;
+        numberOfItems = populationItemList.size();
     }
 
     public void createPopulation() {
@@ -49,20 +57,19 @@ public class GeneticAlgorithm {
             }
 
         }
-        return new BestSolution(populationItemList,weight,value,list);
+        return new BestSolution(populationItemList, weight, value, list);
     }
-
 
 
     public void run() {
 
         createPopulation();
         System.out.println(chromosom);
-        for (int k = 0; k < 15; k++) {
+        for (int k = 0; k < numberOfGenerations; k++) {
             fittest();
             calculateChromosome();
             bestGene = tournamentSelection();
-            ArrayList<ArrayList<Integer>> arrayLists = twoCross(bestGene, 0.2);
+            ArrayList<ArrayList<Integer>> arrayLists = twoCross(bestGene);
             System.out.println();
             int q = 0;
             for (ArrayList<Integer> e : arrayLists) {
@@ -72,14 +79,7 @@ public class GeneticAlgorithm {
             }
 
 
-            double mutationRate = 0.4;
-            for (int i = 0; i < 10; i++) {
-                if (randomNumber().nextDouble() < mutationRate) {
-                    System.out.println("mutacja" + i);
-                    arrayLists.set(i, invertMutation(arrayLists.get(i)));
-                }
-
-            }
+            mutation(arrayLists);
 
             q = 0;
             for (ArrayList<Integer> e : arrayLists) {
@@ -95,7 +95,17 @@ public class GeneticAlgorithm {
         System.out.println("SA");
     }
 
-    public ArrayList<Integer> invertMutation(ArrayList<Integer> chromosome) {
+    private void mutation(ArrayList<ArrayList<Integer>> arrayLists) {
+        for (int i = 0; i < numberOfItems; i++) {
+            if (randomNumber().nextDouble() < mutationRate) {
+                System.out.println("mutacja" + i);
+                arrayLists.set(i, bitFilpMutation(arrayLists.get(i)));
+            }
+
+        }
+    }
+
+    public ArrayList<Integer> bitFilpMutation(ArrayList<Integer> chromosome) {
         ArrayList<Integer> newChromosome = new ArrayList<>();
 
         for (int i = 0; i < chromosome.size(); i++) {
@@ -120,15 +130,14 @@ public class GeneticAlgorithm {
         }
     }
 
-    private ArrayList<ArrayList<Integer>> twoCross(ArrayList<Integer> best, double crossoverRate) {
+    private ArrayList<ArrayList<Integer>> twoCross(ArrayList<Integer> best) {
         ArrayList<ArrayList<Integer>> children = new ArrayList<>();
-        childrenPopulation(10, children);
+        childrenPopulation(populationItemList.size(), children);
         ArrayList<Integer> parent1;
         ArrayList<Integer> parent2;
         ArrayList<Integer> child1;
         ArrayList<Integer> child2;
         Random randomizer = new Random();
-        int numItems = 10;
         int n = 2;
         for (int i = 0; i < numberOfItems; i += 2) {
 
@@ -142,17 +151,17 @@ public class GeneticAlgorithm {
                 child2 = children.get(0);
             }
 
-            if (randomizer.nextDouble() < crossoverRate) {
+            if (randomizer.nextDouble() < chanceToCross) {
                 TreeSet<Integer> indices = new TreeSet<>();
                 int iNeeded;
-                if (n < numItems) {
+                if (n < numberOfItems) {
                     iNeeded = n;
                 } else
-                    iNeeded = numItems - 1;
+                    iNeeded = numberOfItems - 1;
                 for (int j = 0; j < iNeeded; j++) {
-                    int guess = randomizer.nextInt(numItems - 1);
+                    int guess = randomizer.nextInt(numberOfItems - 1);
                     while (indices.contains(guess)) {
-                        guess = (guess + 1) % (numItems - 1);
+                        guess = (guess + 1) % (numberOfItems - 1);
                     }
                     indices.add(guess);
                 }
@@ -165,7 +174,7 @@ public class GeneticAlgorithm {
                     }
                     takeFromPar1 = !takeFromPar1;
                 }
-                while (j < numItems) {
+                while (j < numberOfItems) {
                     j = getJ(parent1, parent2, child1, child2, takeFromPar1, j);
                 }
             } else {

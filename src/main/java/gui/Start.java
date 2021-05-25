@@ -3,6 +3,7 @@ package gui;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -18,10 +19,18 @@ public class Start extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Scene scene = new Scene(rootNode, 750, 700);
-        primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
-        primaryStage.sizeToScene();
+
+        primaryStage.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
+            if (!primaryStage.isFullScreen() && event.isShortcutDown() && event.isPrimaryButtonDown()) {
+
+                primaryStage.setFullScreen(true);
+                primaryStage.setResizable(true);
+                event.consume();
+            }
+        });
+
+
+        primaryStage.setScene(new Scene(rootNode));
         primaryStage.show();
     }
 
