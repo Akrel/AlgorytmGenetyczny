@@ -179,9 +179,16 @@ public class GeneticAlgorithm {
                 }
             } else {
 
+                if (child1.isEmpty() && child2.isEmpty()) {
+                    child1.addAll(parent1);
+                    child2.addAll(parent2);
+                } else {
+                    child1.clear();
+                    child2.clear();
+                    child1.addAll(parent1);
+                    child2.addAll(parent2);
+                }
 
-                child1.addAll(parent1);
-                child2.addAll(parent2);
             }
         }
         return children;
@@ -297,7 +304,7 @@ public class GeneticAlgorithm {
                 Item item = getItem(i);
                 totalValue += item.getValue();
             }
-            ++i;
+            i++;
         }
         return totalValue;
     }
