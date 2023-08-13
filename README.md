@@ -3,10 +3,9 @@
 > By utilizing flexible parameters of the genetic algorithm, there is an opportunity to customize its operation to achieve the desired results. These parameters can encompass aspects such as the number of generations, population size, selection operators, crossover, and mutation. Adapting these parameters to the specific knapsack problem enables the optimization of the algorithm's efficiency and increases the likelihood of finding an optimal or near-optimal solution.
 
 ## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
-
+- Java 15
+- JavaFx
+- Lombok
 
 ## Features
 List the ready features here:
