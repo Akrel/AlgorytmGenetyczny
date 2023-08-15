@@ -14,4 +14,4 @@ List the ready features here:
 - Flexible Parameters of the Genetic Algorithm - Possibility to configure the genetic algorithm by adjusting parameters such as the number of generations, population size, selection, crossover and mutation operators, which allows you to optimize the project results for various knapsack scenarios.
 - Awesome feature 3
 
-![alt text](https://imgur.com/Ka1Jz2i)
+<a href="https://imgur.com/Ka1Jz2i"><img src="https://i.imgur.com/Ka1Jz2i.png" title="source: imgur.com" /></a>
