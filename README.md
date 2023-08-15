@@ -9,6 +9,11 @@
 
 ## Features
 List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
+- Selection base on value and weight - 
+- Graphical Interface - implementation of a graphical interface that allows the user to easily adjust the parameters of the algorithm and visualize the optimization process.
+- Flexible Parameters of the Genetic Algorithm - Possibility to configure the genetic algorithm by adjusting parameters such as the number of generations, population size, selection, crossover and mutation operators, which allows you to optimize the project results for various knapsack scenarios.
 - Awesome feature 3
+
+
+
+![alt text](https://imgur.com/Ka1Jz2i)
