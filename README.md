@@ -9,9 +9,12 @@
 
 ## Features
 List the ready features here:
-- Selection base on value and weight - 
+- Selection base on value and weight - Creating a mechanism for selecting items based on both their value and weight, in order to achieve an optimal balance between the value of the items and the weight limitations of the backpack.
 - Graphical Interface - implementation of a graphical interface that allows the user to easily adjust the parameters of the algorithm and visualize the optimization process.
 - Flexible Parameters of the Genetic Algorithm - Possibility to configure the genetic algorithm by adjusting parameters such as the number of generations, population size, selection, crossover and mutation operators, which allows you to optimize the project results for various knapsack scenarios.
-- Awesome feature 3
 
 <a href="https://imgur.com/Ka1Jz2i"><img src="https://i.imgur.com/Ka1Jz2i.png" title="source: imgur.com" /></a>
+
+
+
+The project was conducted as part of a university study program.
